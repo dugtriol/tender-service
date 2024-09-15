@@ -51,9 +51,9 @@ GET /api/org/create
 
 Request:
 {
-    "name": "avito",
-    "description": "description",
-    "type": "LLC"
+	"name": "avito",
+	"description": "description",
+	"type": "LLC"
 }
 
 Response:
@@ -87,7 +87,7 @@ GET /api/orgresp/create
 
 Request:
 {
-    "organization_id": "e61082c9-bea4-4548-8547-39ffd5a14a82",
+	"organization_id": "e61082c9-bea4-4548-8547-39ffd5a14a82",
 	"user_id": "b8689495-81c5-44aa-a12c-7d3d48a48847"
 }
 
