@@ -1,0 +1,31 @@
+services:
+  postgres:
+    container_name: postgres
+    restart: on-failure
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'" ]
+      interval: 2s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - postgres_data:/var/lib/pgdb/data
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./app
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
